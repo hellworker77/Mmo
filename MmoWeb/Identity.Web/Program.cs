@@ -2,6 +2,7 @@
 using System.Reflection;
 using Dal.Data;
 using Entities.Identity;
+using Identity.Web.Config;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -65,7 +66,9 @@ namespace Identity.Web
                 .AddAspNetIdentity<User>();
 
             var app = builder.Build();
-            
+
+            app.InitializeDatabase();
+
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
