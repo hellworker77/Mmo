@@ -1,10 +1,12 @@
-import React from 'react';
+import React from "react";
+
+import AuthorizationPage from "./pages/AuthorizationPage";
 
 const App: React.FC = () => {
   return (
-    <div>
-      Работает!
-    </div>
+    <>
+      <AuthorizationPage />
+    </>
   );
 };
 

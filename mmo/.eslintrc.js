@@ -1,6 +1,7 @@
 /**
- * @type {import("eslint").Linter.Config}
- */
+
+@type {import("eslint").Linter.Config}
+*/
 const config = {
   env: {
     browser: true,
@@ -10,10 +11,10 @@ const config = {
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
-    "plugin:import/recommended",
+    "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/recommended-type-checked",
     "plugin:@typescript-eslint/stylistic-type-checked",
-    "prettier",
+    "plugin:prettier/recommended",
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
@@ -42,7 +43,6 @@ const config = {
         vars: "all",
         args: "after-used",
         ignoreRestSiblings: true,
-        argsIgnorePattern: "^_",
       },
     ],
     "react/react-in-jsx-scope": "off",
@@ -56,5 +56,4 @@ const config = {
     ],
   },
 };
-
 module.exports = config;
