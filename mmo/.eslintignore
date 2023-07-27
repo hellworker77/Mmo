@@ -1,4 +1,6 @@
 node_modules/
-*.config.ts
+dist/
+build/
 *.config.js
-*.cjs
+*.js
+*.log
