@@ -23,7 +23,6 @@ public static class IdentityServerSeedData
             context.SaveChanges();
         }
 
-
         if (!context.IdentityResources.Any())
         {
             foreach (var resource in IdentityServerConfiguration.GetIdentityResources())
@@ -32,6 +31,7 @@ public static class IdentityServerSeedData
             }
             context.SaveChanges();
         }
+
 
         var notExistedScopes = IdentityServerConfiguration.GetApiScopes()
             .Where(c => !context.ApiScopes.Select(c => c.Name).Contains(c.Name)).ToList();
@@ -43,12 +43,12 @@ public static class IdentityServerSeedData
             context.SaveChanges();
         }
 
-        var notExistedResources = IdentityServerConfiguration.GetApiResources()
+        var notExistedApiResources = IdentityServerConfiguration.GetApiResources()
             .Where(c => !context.ApiResources.Select(c => c.Name).Contains(c.Name)).ToList();
 
-        foreach (var notExistedResource in notExistedResources)
+        foreach (var notExistedApiResource in notExistedApiResources)
         {
-            context.ApiResources.Add(notExistedResource.ToEntity());
+            context.ApiResources.Add(notExistedApiResource.ToEntity());
 
             context.SaveChanges();
         }

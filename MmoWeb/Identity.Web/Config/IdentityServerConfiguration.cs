@@ -21,7 +21,8 @@ public static class IdentityServerConfiguration
                     IdentityServerConstants.StandardScopes.OpenId,
                     IdentityServerConstants.StandardScopes.Profile,
                     IdentityServerConstants.StandardScopes.Email,
-                    "api"
+                    "api",
+                    "account"
                 }
             }
         };
@@ -46,13 +47,32 @@ public static class IdentityServerConfiguration
                     JwtClaimTypes.Id,
                     JwtClaimTypes.Profile
                 }
-            }
+            },
+            new ApiScope
+            {
+                Name = "account",
+                DisplayName = "account",
+                Enabled = true,
+                UserClaims =
+                {
+                    JwtClaimTypes.Name,
+                    JwtClaimTypes.Email,
+                    JwtClaimTypes.Subject,
+                    JwtClaimTypes.Role,
+                    JwtClaimTypes.Address,
+                    JwtClaimTypes.Confirmation,
+                    JwtClaimTypes.EmailVerified,
+                    JwtClaimTypes.Id,
+                    JwtClaimTypes.Profile
+                }
+            },
         };
 
     public static IEnumerable<ApiResource> GetApiResources() =>
         new List<ApiResource>
         {
-            new("api", "api") {Scopes = new List<string>{"api"}}
+            new("api", "api") {Scopes = new List<string>{"api"}},
+            new("account", "account") {Scopes = new List<string>{"account"}}
         };
 
     public static IEnumerable<IdentityResource> GetIdentityResources() =>
