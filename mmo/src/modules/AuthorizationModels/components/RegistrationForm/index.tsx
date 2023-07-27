@@ -4,4 +4,4 @@ const RegistrationForm: React.FC = () => {
   return <div>РЕГИСТРАЦИЯ</div>;
 };
 
-export default RegistrationForm;
+export { RegistrationForm };

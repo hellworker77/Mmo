@@ -1,2 +1,2 @@
-export { default as AuthorizationForm } from "./components/AuthorizationForm";
-export { default as RegistrationForm } from "./components/RegistrationForm";
+export { RegistrationForm } from "./components/RegistrationForm";
+export { AuthorizationForm } from "./components/AuthorizationForm";
