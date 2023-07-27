@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.OpenApi.Models;
+using Mapster;
+using MapsterMapper;
+using System.Reflection;
 
 namespace Account.Web;
 
@@ -24,6 +27,13 @@ internal static class ExtensionsMethods
     {
         services.AddTransient<IAccountService, AccountService>();
         services.AddTransient<IIdentityService, IdentityService>();
+    }
+    public static void AddMappers(this IServiceCollection services)
+    {
+        var typeAdapterConfig = TypeAdapterConfig.GlobalSettings;
+        typeAdapterConfig.Scan(Assembly.GetExecutingAssembly());
+        var mapperConfig = new Mapper(typeAdapterConfig);
+        services.AddSingleton<IMapper>(mapperConfig);
     }
     public static void ConfigureAuthentication(this IServiceCollection services, IConfiguration configuration)
     {

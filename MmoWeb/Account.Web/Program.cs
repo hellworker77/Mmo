@@ -1,4 +1,3 @@
-
 using Dal.Data;
 using Microsoft.EntityFrameworkCore;
 using Swashbuckle.AspNetCore.SwaggerUI;
@@ -26,6 +25,7 @@ namespace Account.Web
 
             builder.Services.AddIdentities();
             builder.Services.AddServices();
+            builder.Services.AddMappers();
 
             var app = builder.Build();
             
