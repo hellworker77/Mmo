@@ -1,9 +1,8 @@
-import React from "react";
-
 import {
   AuthorizationForm,
   RegistrationForm,
-} from "../../modules/AuthorizationModels";
+} from "../../modules/AuthorizationModules";
+import React from "react";
 
 const AuthorizationPage: React.FC = () => {
   return (
