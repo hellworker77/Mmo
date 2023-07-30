@@ -9,6 +9,8 @@ using Microsoft.OpenApi.Models;
 using Mapster;
 using MapsterMapper;
 using System.Reflection;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace Account.Web;
 
@@ -51,6 +53,7 @@ internal static class ExtensionsMethods
             options.Authority = identityUrl;
             options.RequireHttpsMetadata = false;
             options.Audience = "account";
+            options.TokenValidationParameters.RoleClaimType = "role";
         });
     }
     public static void AddSwaggerGenWithAuth(this IServiceCollection services, IConfiguration configuration)
