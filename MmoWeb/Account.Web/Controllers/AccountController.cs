@@ -3,6 +3,7 @@ using Common.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading;
 
 namespace Account.Web.Controllers;
 
@@ -21,41 +22,58 @@ public class AccountController : ControllerBase
     }
 
     [HttpGet("id")]
-    public async Task<UserDto> GetUserByIdAsync(Guid userId)
+    public async Task<UserDto> GetUserByIdAsync(Guid userId,
+        CancellationToken cancellationToken)
     {
-        return await _accountService.GetByIdAsync(userId);
+        return await _accountService.GetByIdAsync(userId,
+            cancellationToken);
     }
     [HttpPost("register")]
     public async Task<IdentityResult> RegisterAsync(string username, 
         string email,
         string password,
-        string confirmedPassword)
+        string confirmedPassword,
+        CancellationToken cancellationToken)
     {
-        return await _accountService.RegisterAsync(username, email, password, confirmedPassword);
+        return await _accountService.RegisterAsync(username,
+            email, 
+            password,
+            confirmedPassword,
+            cancellationToken);
     }
     [Authorize]
     [HttpPut("changeUserName")]
-    public async Task<IdentityResult> ChangeNameAsync(string username)
+    public async Task<IdentityResult> ChangeNameAsync(string username,
+        CancellationToken cancellationToken)
     {
         var userId = _identityService.GetUserIdentity();
 
-        return await _accountService.ChangeNameAsync(userId, username);
+        return await _accountService.ChangeNameAsync(userId,
+            username,
+            cancellationToken);
     }
     [Authorize]
     [HttpPut("changeEmail")]
-    public async Task<IdentityResult> ChangeEmailAsync(string email)
+    public async Task<IdentityResult> ChangeEmailAsync(string email,
+        CancellationToken cancellationToken)
     {
         var userId = _identityService.GetUserIdentity();
 
-        return await _accountService.ChangeEmailAsync(userId, email);
+        return await _accountService.ChangeEmailAsync(userId,
+            email,
+            cancellationToken);
     }
     [Authorize]
     [HttpPut("changePassword")]
     public async Task<IdentityResult> ChangeEmailAsync(string password,
-        string currentPassword)
+        string currentPassword,
+        CancellationToken cancellationToken)
     {
         var userId = _identityService.GetUserIdentity();
 
-        return await _accountService.ChangePasswordAsync(userId, currentPassword, password);
+        return await _accountService.ChangePasswordAsync(userId,
+            currentPassword,
+            password,
+            cancellationToken);
     }
 }
