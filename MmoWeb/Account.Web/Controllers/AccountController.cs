@@ -20,13 +20,6 @@ public class AccountController : ControllerBase
         _identityService = identityService;
         _accountService = accountService;
     }
-    [Authorize]
-    [HttpGet]
-    public int Get()
-    {
-        return 1;
-    }
-
     [HttpGet("id")]
     public async Task<UserDto> GetUserByIdAsync(Guid userId,
         CancellationToken cancellationToken)
