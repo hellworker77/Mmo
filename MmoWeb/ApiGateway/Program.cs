@@ -60,9 +60,9 @@ namespace ApiGateway
 
             app.UseHttpsRedirection();
 
-            app.UseAuthorization();
-
             app.UseAuthentication();
+
+            app.UseAuthorization();
 
             app.UseOcelot().Wait();
 

@@ -5,20 +5,26 @@ namespace Common.IServices;
 
 public interface IAccountService
 {
-    Task<UserDto> GetByIdAsync(Guid userId);
+    Task<UserDto> GetByIdAsync(Guid userId,
+        CancellationToken cancellationToken);
 
     Task<IdentityResult> RegisterAsync(string username, 
         string email, 
         string password, 
-        string confirmedPassword);
+        string confirmedPassword,
+        string roleName,
+        CancellationToken cancellationToken);
 
     Task<IdentityResult> ChangeNameAsync(Guid userId, 
-        string username);
+        string username,
+        CancellationToken cancellationToken);
 
     Task<IdentityResult> ChangeEmailAsync(Guid userId,
-        string email);
+        string email,
+        CancellationToken cancellationToken);
 
     Task<IdentityResult> ChangePasswordAsync(Guid userId,
         string currentPassword,
-        string password);
+        string password,
+        CancellationToken cancellationToken);
 }

@@ -22,5 +22,8 @@ public class DbInitializer : IDbInitializer
 
         _context.Users.AddRange(FakeData.Users);
         _context.SaveChanges();
+
+        _context.UserRoles.AddRange(FakeData.UserRoles);
+        _context.SaveChanges();
     }
 }

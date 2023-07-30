@@ -1,10 +1,9 @@
-
-using System.Reflection;
 using Dal.Data;
 using Entities.Identity;
 using Identity.Web.Config;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 namespace Identity.Web
 {
@@ -79,9 +78,11 @@ namespace Identity.Web
 
             app.UseHttpsRedirection();
 
-            app.UseAuthorization();
+            app.UseRouting();
 
             app.UseIdentityServer();
+
+            app.UseAuthorization();
 
             app.MapControllers();
 
