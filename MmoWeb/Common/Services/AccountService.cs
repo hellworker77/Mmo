@@ -2,11 +2,9 @@
 using Common.IServices;
 using Common.Models;
 using Entities.Identity;
-using Mapster;
 using MapsterMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using System.Text;
 
 namespace Common.Services;
 
@@ -22,10 +20,11 @@ public class AccountService : IAccountService
         _mapper = mapper;  
     }
 
-    public async Task<UserDto> GetByIdAsync(Guid userId)
+    public async Task<UserDto> GetByIdAsync(Guid userId,
+        CancellationToken cancellationToken)
     {
         var source = await _userManager.Users
-            .FirstOrDefaultAsync(x => x.Id == userId);
+            .FirstOrDefaultAsync(x => x.Id == userId, cancellationToken);
 
         if (source == null)
         {
@@ -40,7 +39,8 @@ public class AccountService : IAccountService
     public async Task<IdentityResult> RegisterAsync(string username,
         string email,
         string password,
-        string confirmedPassword)
+        string confirmedPassword,
+        CancellationToken cancellationToken)
     {
         if (password != confirmedPassword)
         {
@@ -58,10 +58,11 @@ public class AccountService : IAccountService
     }
 
     public async Task<IdentityResult> ChangeNameAsync(Guid userId,
-        string username)
+        string username,
+        CancellationToken cancellationToken)
     {
         var user = await _userManager.Users
-            .FirstOrDefaultAsync(x => x.Id == userId);
+            .FirstOrDefaultAsync(x => x.Id == userId, cancellationToken);
 
         if (user == null)
         {
@@ -72,10 +73,11 @@ public class AccountService : IAccountService
     }
 
     public async Task<IdentityResult> ChangeEmailAsync(Guid userId,
-        string email)
+        string email,
+        CancellationToken cancellationToken)
     {
         var user = await _userManager.Users
-            .FirstOrDefaultAsync(x => x.Id == userId);
+            .FirstOrDefaultAsync(x => x.Id == userId, cancellationToken);
 
         if (user == null)
         {
@@ -88,10 +90,11 @@ public class AccountService : IAccountService
 
     public async Task<IdentityResult> ChangePasswordAsync(Guid userId,
         string currentPassword,
-        string password)
+        string password,
+        CancellationToken cancellationToken)
     {
         var user = await _userManager.Users
-            .FirstOrDefaultAsync(x => x.Id == userId);
+            .FirstOrDefaultAsync(x => x.Id == userId, cancellationToken);
 
         if (user == null)
         {
