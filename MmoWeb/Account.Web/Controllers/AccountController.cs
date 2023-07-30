@@ -20,6 +20,12 @@ public class AccountController : ControllerBase
         _identityService = identityService;
         _accountService = accountService;
     }
+    [Authorize]
+    [HttpGet]
+    public int Get()
+    {
+        return 1;
+    }
 
     [HttpGet("id")]
     public async Task<UserDto> GetUserByIdAsync(Guid userId,
@@ -28,6 +34,7 @@ public class AccountController : ControllerBase
         return await _accountService.GetByIdAsync(userId,
             cancellationToken);
     }
+
     [HttpPost("register")]
     public async Task<IdentityResult> RegisterAsync(string username, 
         string email,
@@ -41,6 +48,7 @@ public class AccountController : ControllerBase
             confirmedPassword,
             cancellationToken);
     }
+
     [Authorize]
     [HttpPut("changeUserName")]
     public async Task<IdentityResult> ChangeNameAsync(string username,
@@ -52,6 +60,7 @@ public class AccountController : ControllerBase
             username,
             cancellationToken);
     }
+
     [Authorize]
     [HttpPut("changeEmail")]
     public async Task<IdentityResult> ChangeEmailAsync(string email,
@@ -63,6 +72,7 @@ public class AccountController : ControllerBase
             email,
             cancellationToken);
     }
+
     [Authorize]
     [HttpPut("changePassword")]
     public async Task<IdentityResult> ChangeEmailAsync(string password,
