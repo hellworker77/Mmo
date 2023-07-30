@@ -13,12 +13,18 @@ public class AccountController : ControllerBase
 {
     private readonly IIdentityService _identityService;
     private readonly IAccountService _accountService;
+    private readonly IRoleService _roleService;
+    private readonly string _baseRoleName;
 
     public AccountController(IIdentityService identityService,
-        IAccountService accountService)
+        IAccountService accountService,
+        IRoleService roleService,
+        string baseRoleName = "user")
     {
         _identityService = identityService;
         _accountService = accountService;
+        _roleService = roleService;
+        _baseRoleName = baseRoleName;
     }
     [HttpGet("id")]
     public async Task<UserDto> GetUserByIdAsync(Guid userId,
@@ -35,10 +41,14 @@ public class AccountController : ControllerBase
         string confirmedPassword,
         CancellationToken cancellationToken)
     {
+        await _roleService.EnsureCreateAsync(_baseRoleName,
+            cancellationToken);
+
         return await _accountService.RegisterAsync(username,
             email, 
             password,
             confirmedPassword,
+            _baseRoleName,
             cancellationToken);
     }
 

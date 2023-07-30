@@ -28,6 +28,7 @@ internal static class ExtensionsMethods
     public static void AddServices(this IServiceCollection services)
     {
         services.AddTransient<IAccountService, AccountService>();
+        services.AddTransient<IRoleService, RoleService>();
         services.AddTransient<IIdentityService, IdentityService>();
     }
     public static void AddMappers(this IServiceCollection services)

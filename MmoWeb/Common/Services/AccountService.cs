@@ -40,6 +40,7 @@ public class AccountService : IAccountService
         string email,
         string password,
         string confirmedPassword,
+        string roleName,
         CancellationToken cancellationToken)
     {
         if (password != confirmedPassword)
@@ -53,8 +54,9 @@ public class AccountService : IAccountService
             Email = email,
             EmailConfirmed = false
         };
+        await _userManager.CreateAsync(user, password);
 
-        return await _userManager.CreateAsync(user, password);
+        return await _userManager.AddToRoleAsync(user, roleName);
     }
 
     public async Task<IdentityResult> ChangeNameAsync(Guid userId,
