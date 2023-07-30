@@ -1,5 +1,22 @@
 {
-  "Routes": [],
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/api/Account/{any}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7262
+        }
+      ],
+      "UpstreamPathTemplate": "/api/Account/{any}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "IdentityApiKey",
+        "AllowedScopes": [ "account" ]
+      }
+    }
+  ],
   "GlobalConfiguration": {
     "BaseUrl": "https://localhost:5000"
   }
