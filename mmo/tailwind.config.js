@@ -6,15 +6,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        beige: {
-          100: '#FFFEF8',
-          200: '#FFFFEB',
-          300: '#f7f5f0',
-          400: '#ab8673',
-          500: '#d7b29f',
-          600: '#12121c'
-        },
-      }
+        gold: "#FFD700",
+      },
+      boxShadow: {
+        inner: 'inset 0px 0px 15px rgba(0,0.7,0,0.8)',
+      },
     },
   },
   plugins: [],
