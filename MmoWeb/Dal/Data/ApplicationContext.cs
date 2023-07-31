@@ -16,7 +16,7 @@ public class ApplicationContext : IdentityDbContext<User,
 {
     public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options)
     {
-
+        
     }
     protected override void OnModelCreating(ModelBuilder builder)
     {

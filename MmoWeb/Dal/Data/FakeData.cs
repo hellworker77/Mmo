@@ -12,7 +12,50 @@ public static class FakeData
             Id = Guid.NewGuid(),
             Name = "admin",
             NormalizedName = "ADMIN",
-            ConcurrencyStamp = Guid.NewGuid().ToString("D")
+            ConcurrencyStamp = Guid.NewGuid().ToString("D"),
+            IsAvailableToPromote = false,
+        },
+        new Role
+        {
+            Name = "assistant",
+            NormalizedName = "ASSISTANT",
+            ConcurrencyStamp = Guid.NewGuid().ToString("D"),
+            IsAvailableToPromote = true
+        },
+        new Role
+        {
+            Name = "moderator",
+            NormalizedName = "MODERATOR",
+            ConcurrencyStamp = Guid.NewGuid().ToString("D"),
+            IsAvailableToPromote = false
+        },
+        new Role
+        {
+            Name = "user",
+            NormalizedName = "USER",
+            ConcurrencyStamp = Guid.NewGuid().ToString("D"),
+            IsAvailableToPromote = true
+        },
+        new Role
+        {
+            Name = "gameMaster",
+            NormalizedName = "GAMEMASTER",
+            ConcurrencyStamp = Guid.NewGuid().ToString("D"),
+            IsAvailableToPromote = true
+        },
+        new Role
+        {
+            Name = "eventMaster",
+            NormalizedName = "EVENTMASTER",
+            ConcurrencyStamp = Guid.NewGuid().ToString("D"),
+            IsAvailableToPromote = true
+        },
+        new Role
+        {
+            Name = "communityManager",
+            NormalizedName = "COMMUNITYMANAGER",
+            ConcurrencyStamp = Guid.NewGuid().ToString("D"),
+            IsAvailableToPromote = true
         }
     };
     public static ICollection<User> Users = new List<User>

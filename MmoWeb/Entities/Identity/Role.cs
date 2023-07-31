@@ -4,5 +4,5 @@ namespace Entities.Identity;
 
 public class Role : IdentityRole<Guid>
 {
-    
+    public bool IsAvailableToPromote { get; set; }
 }
