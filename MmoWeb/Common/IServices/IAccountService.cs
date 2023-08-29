@@ -12,7 +12,6 @@ public interface IAccountService
         string email, 
         string password, 
         string confirmedPassword,
-        string roleName,
         CancellationToken cancellationToken);
 
     Task<IdentityResult> ChangeNameAsync(Guid userId, 
