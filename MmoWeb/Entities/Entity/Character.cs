@@ -13,7 +13,7 @@ public class Character : BaseEntity
     public virtual User User { get; set; }
     public Guid UserId { get; set; }
     public virtual GuildMember? GuildMember { get; set; }
-    public virtual IList<Message>? Messages { get; set; }
+    public virtual IList<MessageAbstract>? SentMessages { get; set; }
     public virtual IList<ChannelCharacter>? ChannelsCharacter { get; set; }
     public virtual IList<TalentCharacter>? TalentsCharacter { get; set; }
     public virtual IList<SkillCharacter>? SkillsCharacter { get; set; }
