@@ -11,6 +11,7 @@ public class LocationQueueNpcConfiguration : IEntityTypeConfiguration<LocationQu
 {
     public void Configure(EntityTypeBuilder<LocationQueueNpc> builder)
     {
+        builder.HasKey(x => x.Id);
         builder.HasBaseType<LocationQueueAbstract>()
             .HasDiscriminator(x => x.LocationQueueDiscriminator)
             .HasValue(LocationQueueDiscriminator.Npc);

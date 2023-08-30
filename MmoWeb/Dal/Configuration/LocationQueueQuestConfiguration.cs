@@ -10,6 +10,7 @@ public class LocationQueueQuestConfiguration : IEntityTypeConfiguration<Location
 {
     public void Configure(EntityTypeBuilder<LocationQueueQuest> builder)
     {
+        builder.HasKey(x => x.Id);
         builder.HasBaseType<LocationQueueAbstract>()
             .HasDiscriminator(x => x.LocationQueueDiscriminator)
             .HasValue(LocationQueueDiscriminator.Quest);
