@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import backgroundImageButton from "../../../../assets/images/backgroundButton.png"
+import backgroundImageButton from "../../../../assets/images/backgroundButton.png";
 import { RegistrationForm } from "../RegistrationForm";
 
 const AuthorizationForm: React.FC = () => {
@@ -9,7 +9,7 @@ const AuthorizationForm: React.FC = () => {
   const [showRegistrationForm, setShowRegistrationForm] = useState(false);
 
   return (
-    <div className="relative flex h-screen w-screen items-center justify-center">
+    <div className=" relative flex h-screen w-screen items-center justify-center">
       <video
         autoPlay
         muted
@@ -41,16 +41,28 @@ const AuthorizationForm: React.FC = () => {
               placeholder="Password"
             />
             <div className="flex justify-between">
-            <button className="relative flex items-center justify-center w-64 h-12 bg-gray-500 rounded-md overflow-hidden">
-              <img src={backgroundImageButton} alt="Background" className="absolute inset-0 w-full h-full" />
-              <span className="text-gold text-sm font-bold z-10">Авторизация</span>
-            </button>
+              <button className="relative flex h-12 w-64 items-center justify-center overflow-hidden rounded-md bg-gray-500">
+                <img
+                  src={backgroundImageButton}
+                  alt="Background"
+                  className="absolute inset-0 h-full w-full"
+                />
+                <span className="z-10 text-sm font-bold text-gold">
+                  Авторизация
+                </span>
+              </button>
               <button
-                className="relative flex items-center justify-center w-64 h-12 bg-gray-500 rounded-md overflow-hidden"
+                className="relative flex h-12 w-64 items-center justify-center overflow-hidden rounded-md bg-gray-500"
                 onClick={() => setShowRegistrationForm(true)}
               >
-<img src={backgroundImageButton} alt="Background" className="absolute inset-0 w-full h-full" />
-                <span className="text-gold text-sm font-bold z-10">Регистрация</span>
+                <img
+                  src={backgroundImageButton}
+                  alt="Background"
+                  className="absolute inset-0 h-full w-full"
+                />
+                <span className="z-10 text-sm font-bold text-gold">
+                  Регистрация
+                </span>
               </button>
             </div>
           </>
