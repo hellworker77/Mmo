@@ -61,8 +61,7 @@ public class CharacterService : ICharacterService
 
     public async Task ChangeNameAsync(CharacterToNameChangeDto characterDto)
     {
-        var character = await _characterRepository.GetByIdWithUserIdAsync(characterDto.UserId,
-                            characterDto.Id)
+        var character = await _characterRepository.GetByIdWithUserIdAsync(characterDto.UserId, characterDto.Id)
                         ?? throw new CharacterWithUserIdByIdNotFoundException(characterDto.UserId, characterDto.Id);
 
         character.Name = characterDto.Name;
@@ -70,10 +69,13 @@ public class CharacterService : ICharacterService
         await _characterRepository.ChangeNameAsync(character);
     }
 
-    public Task<IActionResult> DeleteCharacterAsync(Guid userId,
+    public async Task DeleteCharacterAsync(Guid userId,
         Guid characterId)
     {
-        throw new NotImplementedException();
+        var character = await _characterRepository.GetByIdWithUserIdAsync(userId, characterId)
+                        ?? throw new CharacterWithUserIdByIdNotFoundException(userId, characterId);
+
+        await _characterRepository.DeleteCharacterAsync(character);
     }
 
     public Task<IList<CharacterShortDto>> GetChunkAsync(Chunk chunk)

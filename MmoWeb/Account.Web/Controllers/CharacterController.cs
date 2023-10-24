@@ -49,13 +49,27 @@ namespace Account.Web.Controllers
 
             await _characterService.SelectCharacterAsync(userId, characterId);
             
-            return Ok();
+            return Ok("Character selected");
         }
         [Authorize]
         [HttpPut("editNickName")]
-        public async Task EditNickNameAsync(CharacterToNameChangeDto characterDto)
+        public async Task<IActionResult> EditNickNameAsync(CharacterToNameChangeDto characterDto)
         {
             await _characterService.ChangeNameAsync(characterDto);
+
+            return Ok("Name changed");
         }
+
+        [Authorize]
+        [HttpDelete("deleteById")]
+        public async Task<IActionResult> DeleteByIdAsync(Guid characterId)
+        {
+            var userId = _identityService.GetUserIdentity();
+
+            await _characterService.DeleteCharacterAsync(userId, characterId);
+            
+            return Ok();
+        }
+        
     }
 }

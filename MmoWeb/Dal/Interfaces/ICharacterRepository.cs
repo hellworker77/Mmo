@@ -10,4 +10,5 @@ public interface ICharacterRepository
         Guid characterId);
     Task<Guid> CreateAsync(Character character);
     Task ChangeNameAsync(Character character);
+    Task DeleteCharacterAsync(Character character);
 }

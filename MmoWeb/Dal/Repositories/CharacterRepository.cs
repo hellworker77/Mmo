@@ -40,4 +40,10 @@ public class CharacterRepository : ICharacterRepository
         _applicationContext.Entry(character).Property(x => x.Name).IsModified = true;
         await _applicationContext.SaveChangesAsync();
     }
+
+    public async Task DeleteCharacterAsync(Character character)
+    {
+        _applicationContext.Entry(character).State = EntityState.Deleted;
+        await _applicationContext.SaveChangesAsync();
+    }
 }
