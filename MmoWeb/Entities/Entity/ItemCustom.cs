@@ -11,6 +11,6 @@ public class ItemCustom : BaseEntity
     public Guid SourceItemId { get; set; }
     public virtual Character Owner { get; set; }
     public Guid OwnerId { get; set; }
+    public ItemBound BoundTo { get; set; }
     public virtual AuctionItem AuctionItem { get; set; }
-    public ItemBound Bound { get; set; }
 }

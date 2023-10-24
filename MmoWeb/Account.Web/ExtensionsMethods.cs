@@ -11,6 +11,8 @@ using MapsterMapper;
 using System.Reflection;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Dal.Interfaces;
+using Dal.Repositories;
 
 namespace Account.Web;
 
@@ -27,9 +29,15 @@ internal static class ExtensionsMethods
     }
     public static void AddServices(this IServiceCollection services)
     {
+        services.AddTransient<ICharacterService, CharacterService>();
         services.AddTransient<IAccountService, AccountService>();
         services.AddTransient<IRoleService, RoleService>();
         services.AddTransient<IIdentityService, IdentityService>();
+    }
+
+    public static void AddRepositories(this IServiceCollection services)
+    {
+        services.AddTransient<ICharacterRepository, CharacterRepository>();
     }
     public static void AddMappers(this IServiceCollection services)
     {

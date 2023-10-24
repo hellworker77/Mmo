@@ -8,10 +8,13 @@ namespace Entities.Entity;
 public class Character : BaseEntity
 {
     public string Name { get; set; }
-    public virtual IList<AuctionItem>? AuctionItems { get; set; }
-    public virtual IList<ItemCustom>? CustomItems { get; set; }
+    public string Bio { get; set; } = string.Empty;
+    public int Rating { get; set; } = 0;
+    public CharacterClass Class { get; set; }
     public virtual User User { get; set; }
     public Guid UserId { get; set; }
+    public virtual IList<AuctionItem>? AuctionItems { get; set; }
+    public virtual IList<ItemCustom>? CustomItems { get; set; }
     public virtual GuildMember? GuildMember { get; set; }
     public virtual IList<MessageAbstract>? SentMessages { get; set; }
     public virtual IList<ChannelCharacter>? ChannelsCharacter { get; set; }
@@ -20,5 +23,5 @@ public class Character : BaseEntity
     public virtual IList<CharacterNpc>? CharacterNpc { get; set; }
     public virtual IList<CharacterQuest>? CharacterQuests { get; set; }
     public virtual IList<CharacterLocation>? CharacterLocations { get; set; }
-    public CharacterClass Class { get; set; }
+   
 }

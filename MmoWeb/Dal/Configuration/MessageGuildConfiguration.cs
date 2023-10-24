@@ -10,7 +10,6 @@ public class MessageGuildConfiguration : IEntityTypeConfiguration<MessageGuild>
 {
     public void Configure(EntityTypeBuilder<MessageGuild> builder)
     {
-        builder.HasKey(x => x.Id);
         builder.HasBaseType<MessageAbstract>()
             .HasDiscriminator(x => x.MessageDiscriminator)
             .HasValue(MessageDiscriminator.Guild);

@@ -1,4 +1,4 @@
-﻿using Common.Models;
+﻿using Common.Models.Dtos;
 using Microsoft.AspNetCore.Identity;
 
 namespace Common.IServices;

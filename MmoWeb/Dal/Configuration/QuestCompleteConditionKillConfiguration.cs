@@ -10,7 +10,6 @@ public class QuestCompleteConditionKillConfiguration : IEntityTypeConfiguration<
 {
     public void Configure(EntityTypeBuilder<QuestCompleteConditionKill> builder)
     {
-        builder.HasKey(x => x.Id);
         builder.HasBaseType<QuestCompleteConditionAbstract>()
             .HasDiscriminator(x => x.CompleteConditionDiscriminator)
             .HasValue(QuestCompleteConditionDiscriminator.Kill);

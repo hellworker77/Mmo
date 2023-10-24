@@ -10,7 +10,6 @@ public class MessageChannelConfiguration : IEntityTypeConfiguration<MessageChann
 {
     public void Configure(EntityTypeBuilder<MessageChannel> builder)
     {
-        builder.HasKey(x => x.Id);
         builder.HasBaseType<MessageAbstract>()
             .HasDiscriminator(x => x.MessageDiscriminator)
             .HasValue(MessageDiscriminator.Channel);

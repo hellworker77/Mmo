@@ -10,7 +10,6 @@ public class QuestCompleteConditionCollectConfiguration : IEntityTypeConfigurati
 {
     public void Configure(EntityTypeBuilder<QuestCompleteConditionCollect> builder)
     {
-        builder.HasKey(x => x.Id);
         builder.HasBaseType<QuestCompleteConditionAbstract>()
             .HasDiscriminator(x => x.CompleteConditionDiscriminator)
             .HasValue(QuestCompleteConditionDiscriminator.Collect);

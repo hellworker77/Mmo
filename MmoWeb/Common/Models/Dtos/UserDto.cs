@@ -1,4 +1,5 @@
-﻿namespace Common.Models;
+﻿#pragma warning disable CS8618
+namespace Common.Models.Dtos;
 
 public class UserDto
 {

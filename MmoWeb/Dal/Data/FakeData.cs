@@ -1,4 +1,5 @@
 ﻿using Entities.Entity;
+using Entities.Enums;
 using Entities.Identity;
 using Microsoft.AspNetCore.Identity;
 
@@ -87,7 +88,8 @@ public static class FakeData
         new Character
         {
             UserId = Users.First()!.Id,
-            Name = "Lilith"
+            Name = "Lilith",
+            Class = CharacterClass.None
         }
     };
 }
