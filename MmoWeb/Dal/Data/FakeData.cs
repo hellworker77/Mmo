@@ -89,7 +89,7 @@ public static class FakeData
         {
             UserId = Users.First()!.Id,
             Name = "Lilith",
-            Class = CharacterClass.None
+            Class = CharacterClass.Ranger
         }
     };
 }
