@@ -52,7 +52,7 @@ namespace Account.Web.Controllers
             return Ok("Character selected");
         }
         [Authorize]
-        [HttpPut("editNickName")]
+        [HttpPut("changeName")]
         public async Task<IActionResult> ChangeNameAsync(Guid characterId,
             string newName)
         {
