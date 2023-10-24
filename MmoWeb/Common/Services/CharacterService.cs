@@ -59,12 +59,14 @@ public class CharacterService : ICharacterService
         return await Task.FromResult(new Guid(data));
     }
 
-    public async Task ChangeNameAsync(CharacterToNameChangeDto characterDto)
+    public async Task ChangeNameAsync(Guid userId,
+        Guid characterId, 
+        string newName)
     {
-        var character = await _characterRepository.GetByIdWithUserIdAsync(characterDto.UserId, characterDto.Id)
-                        ?? throw new CharacterWithUserIdByIdNotFoundException(characterDto.UserId, characterDto.Id);
+        var character = await _characterRepository.GetByIdWithUserIdAsync(userId, characterId)
+                        ?? throw new CharacterWithUserIdByIdNotFoundException(userId, characterId);
 
-        character.Name = characterDto.Name;
+        character.Name = newName;
         
         await _characterRepository.ChangeNameAsync(character);
     }

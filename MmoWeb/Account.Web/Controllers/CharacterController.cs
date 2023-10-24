@@ -53,9 +53,12 @@ namespace Account.Web.Controllers
         }
         [Authorize]
         [HttpPut("editNickName")]
-        public async Task<IActionResult> EditNickNameAsync(CharacterToNameChangeDto characterDto)
+        public async Task<IActionResult> ChangeNameAsync(Guid characterId,
+            string newName)
         {
-            await _characterService.ChangeNameAsync(characterDto);
+            var userId = _identityService.GetUserIdentity();
+            
+            await _characterService.ChangeNameAsync(userId, characterId, newName);
 
             return Ok("Name changed");
         }
