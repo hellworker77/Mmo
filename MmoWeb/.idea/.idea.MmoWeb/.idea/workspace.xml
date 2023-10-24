@@ -16,14 +16,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="520485c8-41b1-4385-842d-7a81d0affaf3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Common/Exceptions/Account/CharacterNotSelectedException.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Common/Models/Dtos/Character/CharacterToNameChangeDto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.MmoWeb/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MmoWeb/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Account.Web/Controllers/CharacterController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Account.Web/Controllers/CharacterController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Common/IServices/ICharacterService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/IServices/ICharacterService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Common/Mappers/CharacterMapper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Mappers/CharacterMapper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Common/Models/Dtos/Character/CharacterToNameChangeDto.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Common/Services/CharacterService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Common/Services/CharacterService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dal/Interfaces/ICharacterRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dal/Interfaces/ICharacterRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dal/Repositories/CharacterRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Dal/Repositories/CharacterRepository.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -235,7 +233,7 @@
       <workItem from="1697444197237" duration="151000" />
       <workItem from="1697796459583" duration="6630000" />
       <workItem from="1698055969698" duration="613000" />
-      <workItem from="1698135088993" duration="4415000" />
+      <workItem from="1698135088993" duration="6550000" />
     </task>
     <servers />
   </component>
