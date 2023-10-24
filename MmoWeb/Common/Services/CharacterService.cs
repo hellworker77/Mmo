@@ -25,7 +25,7 @@ public class CharacterService : ICharacterService
         _accessor = accessor;
     }
 
-    public async Task<Guid> CreateCharacterAsync(CharacterDto characterDto,
+    public async Task<Guid> CreateCharacterAsync(CharacterShortDto characterDto,
         Guid userId)
     {
         var character = _mapper.Map<Character>(characterDto);

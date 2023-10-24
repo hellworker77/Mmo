@@ -6,7 +6,7 @@ namespace Common.IServices;
 
 public interface ICharacterService
 {
-    Task<Guid> CreateCharacterAsync(CharacterDto characterDto,
+    Task<Guid> CreateCharacterAsync(CharacterShortDto characterDto,
         Guid userId);
     Task SelectCharacterAsync(Guid userId,
         Guid characterId);

@@ -33,7 +33,7 @@ namespace Account.Web.Controllers
         }
         [Authorize]
         [HttpPost("createCharacter")]
-        public async Task<IActionResult> CreateCharacterAsync(CharacterDto character)
+        public async Task<IActionResult> CreateCharacterAsync(CharacterShortDto character)
         {
             var userId = _identityService.GetUserIdentity();
             var characterId = await _characterService.CreateCharacterAsync(character, userId);
@@ -41,6 +41,7 @@ namespace Account.Web.Controllers
             return Ok(characterId);
         }
 
+        [Authorize]
         [HttpPut("selectCharacterId")]
         public async Task<IActionResult> SelectCharacterAsync(Guid characterId)
         {
