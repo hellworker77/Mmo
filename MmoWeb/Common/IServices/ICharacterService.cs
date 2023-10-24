@@ -12,9 +12,7 @@ public interface ICharacterService
         Guid characterId);
 
     Task<Guid> GetSelectedCharacterIdAsync();
-    Task<IActionResult> EditNameAsync(Guid userId,
-        Guid characterId,
-        string newName);
+    Task ChangeNameAsync(CharacterToNameChangeDto characterDto);
     Task<IActionResult> DeleteCharacterAsync(Guid userId, 
         Guid characterId);
     Task<IList<CharacterShortDto>> GetChunkAsync(Chunk chunk);

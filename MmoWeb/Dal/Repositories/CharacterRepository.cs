@@ -34,4 +34,10 @@ public class CharacterRepository : ICharacterRepository
         
         return character.Id;
     }
+
+    public async Task ChangeNameAsync(Character character)
+    {
+        _applicationContext.Entry(character).Property(x => x.Name).IsModified = true;
+        await _applicationContext.SaveChangesAsync();
+    }
 }

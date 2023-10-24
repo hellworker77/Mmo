@@ -9,4 +9,5 @@ public interface ICharacterRepository
     Task<Character?> GetByIdWithUserIdAsync(Guid userId,
         Guid characterId);
     Task<Guid> CreateAsync(Character character);
+    Task ChangeNameAsync(Character character);
 }

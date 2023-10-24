@@ -11,6 +11,11 @@ public class CharacterMapper : IRegister
         config.ForType<Character, CharacterShortDto>()
             .Map(destination => destination.Class, source => source.Class)
             .Map(destination => destination.Name, source => source.Name);
+        
+        config.ForType<Character, CharacterToNameChangeDto>()
+            .Map(destination => destination.Id, source => source.Id)
+            .Map(destination => destination.UserId, source => source.UserId)
+            .Map(destination => destination.Name, source => source.Name);
 
         config.ForType<Character, Character>()
             .Map(destination => destination.Class, source => source.Class)

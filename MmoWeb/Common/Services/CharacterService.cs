@@ -37,30 +37,37 @@ public class CharacterService : ICharacterService
     public async Task SelectCharacterAsync(Guid userId,
         Guid characterId)
     {
-        var character = await _characterRepository.GetByIdWithUserIdAsync(userId, characterId)
-                        ?? throw new CharacterWithUserIdByIdNotFoundException(userId, characterId);
+        var character = await _characterRepository.GetByIdWithUserIdAsync(userId, characterId);
+
+        if (character == null)
+        {
+            throw new CharacterWithUserIdByIdNotFoundException(userId, characterId);
+        }
 
         _accessor.HttpContext.Session.Set("selectedCharacterId", characterId.ToByteArray());
     }
 
     public async Task<Guid> GetSelectedCharacterIdAsync()
     {
-        var data = Array.Empty<byte>();
-        var successful = _accessor.HttpContext.Session.TryGetValue("selectedCharacterId", out data);
+        var successful = _accessor.HttpContext.Session.TryGetValue("selectedCharacterId", out var data);
 
         if (!successful)
         {
-            throw new Exception("Lol");
+            throw new CharacterNotSelectedException();
         }
         
         return await Task.FromResult(new Guid(data));
     }
 
-    public Task<IActionResult> EditNameAsync(Guid userId,
-        Guid characterId,
-        string newName)
+    public async Task ChangeNameAsync(CharacterToNameChangeDto characterDto)
     {
-        throw new NotImplementedException();
+        var character = await _characterRepository.GetByIdWithUserIdAsync(characterDto.UserId,
+                            characterDto.Id)
+                        ?? throw new CharacterWithUserIdByIdNotFoundException(characterDto.UserId, characterDto.Id);
+
+        character.Name = characterDto.Name;
+        
+        await _characterRepository.ChangeNameAsync(character);
     }
 
     public Task<IActionResult> DeleteCharacterAsync(Guid userId,

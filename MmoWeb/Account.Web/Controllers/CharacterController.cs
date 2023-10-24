@@ -53,10 +53,9 @@ namespace Account.Web.Controllers
         }
         [Authorize]
         [HttpPut("editNickName")]
-        public Task EditNickNameAsync(Guid characterId,
-            string newNickName)
-        { 
-            throw new NotImplementedException();
+        public async Task EditNickNameAsync(CharacterToNameChangeDto characterDto)
+        {
+            await _characterService.ChangeNameAsync(characterDto);
         }
     }
 }
