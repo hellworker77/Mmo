@@ -1,12 +1,16 @@
 import React, { useState } from "react";
-
+import { useFormStore } from "../../store/ChangeFormStore";
 import backgroundImageButton from "../../../../assets/images/backgroundButton.png";
 import { RegistrationForm } from "../RegistrationForm";
 
 const AuthorizationForm: React.FC = () => {
   const [login, setLogin] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [showRegistrationForm, setShowRegistrationForm] = useState(false);
+  const { formType, setFormType } = useFormStore();
+
+  const handleRegistrationClick = () => {
+    setFormType("registration");
+  };
 
   return (
     <div className=" relative flex h-screen w-screen items-center justify-center">
@@ -22,7 +26,7 @@ const AuthorizationForm: React.FC = () => {
         />
       </video>
       <div className="absolute w-64">
-        {showRegistrationForm ? (
+        {formType === "registration" ? (
           <RegistrationForm />
         ) : (
           <>
@@ -53,7 +57,7 @@ const AuthorizationForm: React.FC = () => {
               </button>
               <button
                 className="relative flex h-12 w-64 items-center justify-center overflow-hidden rounded-md bg-gray-500"
-                onClick={() => setShowRegistrationForm(true)}
+                onClick={handleRegistrationClick}
               >
                 <img
                   src={backgroundImageButton}
