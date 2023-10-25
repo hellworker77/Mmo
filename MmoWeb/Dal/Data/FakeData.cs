@@ -1,4 +1,6 @@
-﻿using Entities.Identity;
+﻿using Entities.Entity;
+using Entities.Enums;
+using Entities.Identity;
 using Microsoft.AspNetCore.Identity;
 
 namespace Dal.Data;
@@ -73,13 +75,21 @@ public static class FakeData
             SecurityStamp = Guid.NewGuid().ToString("D")
         }
     };
-
     public static ICollection<IdentityUserRole<Guid>> UserRoles = new List<IdentityUserRole<Guid>>
     {
         new IdentityUserRole<Guid>
         {
             UserId = Users.FirstOrDefault()!.Id,
             RoleId = Roles.FirstOrDefault()!.Id
+        }
+    };
+    public static ICollection<Character> Characters = new List<Character>
+    {
+        new Character
+        {
+            UserId = Users.First()!.Id,
+            Name = "Lilith",
+            Class = CharacterClass.Ranger
         }
     };
 }

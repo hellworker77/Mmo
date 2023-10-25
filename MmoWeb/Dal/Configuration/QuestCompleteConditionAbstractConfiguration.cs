@@ -1,6 +1,5 @@
 ﻿using Entities.Abstract;
 using Entities.Discriminators;
-using Entities.Entity.QuestCompleteConditions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

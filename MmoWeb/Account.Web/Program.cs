@@ -11,9 +11,15 @@ namespace Account.Web
         {
             var builder = WebApplication.CreateBuilder(args);
 
-
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddDistributedMemoryCache();
+            builder.Services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(1);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
             builder.Services.AddSwaggerGenWithAuth(builder.Configuration);
             builder.Services.ConfigureAuthentication(builder.Configuration);
 
@@ -25,6 +31,7 @@ namespace Account.Web
 
             builder.Services.AddIdentities();
             builder.Services.AddServices();
+            builder.Services.AddRepositories();
             builder.Services.AddMappers();
 
             var app = builder.Build();
@@ -32,6 +39,7 @@ namespace Account.Web
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
+                app.UseSession();
                 app.UseSwaggerUI(options =>
                 {
                     options.SwaggerEndpoint("/swagger/v1/swagger.json", "Swagger market");

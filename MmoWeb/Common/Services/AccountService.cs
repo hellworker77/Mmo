@@ -1,6 +1,6 @@
 ﻿using Common.Exceptions.Account;
 using Common.IServices;
-using Common.Models;
+using Common.Models.Dtos;
 using Entities.Identity;
 using MapsterMapper;
 using Microsoft.AspNetCore.Identity;
@@ -24,12 +24,8 @@ public class AccountService : IAccountService
         CancellationToken cancellationToken)
     {
         var source = await _userManager.Users
-            .FirstOrDefaultAsync(x => x.Id == userId, cancellationToken);
-
-        if (source == null)
-        {
-            throw new UserNotFoundException(userId);
-        }
+            .FirstOrDefaultAsync(x => x.Id == userId, cancellationToken) 
+                     ?? throw new UserNotFoundException(userId);
 
         var destination = _mapper.Map<UserDto>(source);
 
@@ -63,12 +59,8 @@ public class AccountService : IAccountService
         CancellationToken cancellationToken)
     {
         var user = await _userManager.Users
-            .FirstOrDefaultAsync(x => x.Id == userId, cancellationToken);
-
-        if (user == null)
-        {
-            throw new UserNotFoundException(userId);
-        }
+            .FirstOrDefaultAsync(x => x.Id == userId, cancellationToken)
+            ?? throw new UserNotFoundException(userId);
 
         return await _userManager.SetUserNameAsync(user, username);
     }
@@ -78,12 +70,8 @@ public class AccountService : IAccountService
         CancellationToken cancellationToken)
     {
         var user = await _userManager.Users
-            .FirstOrDefaultAsync(x => x.Id == userId, cancellationToken);
-
-        if (user == null)
-        {
-            throw new UserNotFoundException(userId);
-        }
+            .FirstOrDefaultAsync(x => x.Id == userId, cancellationToken)
+            ?? throw new UserNotFoundException(userId);
 
         string token = await _userManager.GenerateChangeEmailTokenAsync(user, email);
         return await _userManager.ChangeEmailAsync(user, email, token);
@@ -95,12 +83,8 @@ public class AccountService : IAccountService
         CancellationToken cancellationToken)
     {
         var user = await _userManager.Users
-            .FirstOrDefaultAsync(x => x.Id == userId, cancellationToken);
-
-        if (user == null)
-        {
-            throw new UserNotFoundException(userId);
-        }
+            .FirstOrDefaultAsync(x => x.Id == userId, cancellationToken)
+            ?? throw new UserNotFoundException(userId);
 
         return await _userManager.ChangePasswordAsync(user, currentPassword, password);
     }

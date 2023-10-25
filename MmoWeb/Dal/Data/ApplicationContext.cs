@@ -38,7 +38,7 @@ public class ApplicationContext : IdentityDbContext<User,
     public DbSet<Location> Locations { get; set; }
     public DbSet<LocationQueueAbstract> LocationsQueue { get; set; }
     public DbSet<Media> Medias { get; set; }
-    public DbSet<Message> Messages { get; set; }
+    public DbSet<MessageAbstract> Messages { get; set; }
     public DbSet<Npc> Npcs { get; set; }
     public DbSet<Quest> Quests { get; set; }
     public DbSet<Skill> Skills { get; set; }

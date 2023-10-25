@@ -2,5 +2,7 @@
 
 public enum CharacterClass
 {
-    None
+    Warrior,
+    Ranger,
+    Mage
 }
