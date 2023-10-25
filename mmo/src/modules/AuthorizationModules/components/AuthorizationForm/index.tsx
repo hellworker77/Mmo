@@ -44,7 +44,7 @@ const AuthorizationForm: React.FC = () => {
               type="password"
               placeholder="Password"
             />
-            <div className="flex justify-between">
+            <div className="flex gap-3">
               <button className="relative flex h-12 w-64 items-center justify-center overflow-hidden rounded-md bg-gray-500">
                 <img
                   src={backgroundImageButton}

@@ -17,7 +17,7 @@ const RegistrationForm: React.FC = () => {
   };
 
   return (
-    <div className="h-[300px] w-[300px] bg-gray-800 bg-opacity-50 p-6">
+    <div className="">
       <form onSubmit={handleSubmit} className="w-64">
         <input
           className="mb-4 w-full rounded border p-2"
@@ -43,7 +43,7 @@ const RegistrationForm: React.FC = () => {
           placeholder="Password"
           required
         />
-        <div className="flex justify-between">
+        <div className="flex gap-3">
           <button className="relative flex h-12 w-64 items-center justify-center overflow-hidden rounded-md bg-gray-500">
             <img
               src={backgroundImageButton}
